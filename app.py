@@ -58,8 +58,8 @@ with col2:
             # Výchozí hodnota X=168 odpovídá pozici bílého obdélníku za "Kód hry" na šířku A4
             x_pos = st.number_input("Souřadnice X:", min_value=0, max_value=900, value=168, step=5)
         with col_y:
-            # Výchozí hodnota Y=170 posouvá text přesně do spodního bílého políčka na šířku A4
-            y_pos = st.number_input("Souřadnice Y:", min_value=0, max_value=600, value=170, step=5)
+            # Výchozí hodnota Y=175 posouvá text přesně do spodního bílého políčka na šířku A4
+            y_pos = st.number_input("Souřadnice Y:", min_value=0, max_value=600, value=175, step=5)
         with col_size:
             font_size = st.number_input("Velikost písma:", min_value=6, max_value=72, value=14, step=1)
             
