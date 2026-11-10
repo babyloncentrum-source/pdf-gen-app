@@ -128,11 +128,13 @@ if df is not None and template_pdf is not None and st.session_state.pdf_mapping:
                 c.save()
                 overlay_bytes = overlay_buffer.getvalue()
                 
-                reader_template = PdfReader(io.BytesIO(template_bytes))
-                reader_overlay = PdfReader(io.BytesIO(overlay_bytes))
-                
-                page = reader_template.pages[0]
-                page.merge_page(reader_overlay.pages[0])
+               reader_template = PdfReader(io.BytesIO(template_bytes))
+reader_overlay = PdfReader(io.BytesIO(overlay_bytes))
+
+# 1. nejdřív přidat stránku šablony do writeru
+output_writer.add_page(reader_template.pages[0])
+# 2. teprve potom na stránku patřící writeru sloučit overlay
+output_writer.pages[-1].merge_page(reader_overlay.pages[0])
                 
                 output_writer.add_page(page)
                 
