@@ -38,7 +38,8 @@ with col1:
         try:
             xl = pd.ExcelFile(uploaded_file)
             sheet = st.selectbox("Vyberte list:", xl.sheet_names)
-            df = xl.parse(sheet)
+            df = xl.parse(sheet, header=None, dtype=str)
+            df.columns = [f"Sloupec {i+1}" for i in range(df.shape[1])]
             columns = list(df.columns)
             st.success(f"Načteno {len(columns)} sloupců a {len(df)} řádků z Excelu.")
         except Exception as e:
